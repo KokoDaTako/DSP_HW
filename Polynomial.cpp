@@ -51,11 +51,11 @@ void Polynomial::SetDegree(unsigned int newDeg)
 
 	if (oldDeg < newDeg)
 	{
-		for (unsigned int i = oldDeg; i <= polynomialDegree; i++) polynomialCoefficients[i] = 0;
+		for (unsigned int i = oldDeg + 1; i <= polynomialDegree; i++) polynomialCoefficients[i] = 0;
 	}
 	else if (oldDeg > newDeg)
 	{
-		for (unsigned int i = oldDeg; i >= polynomialDegree; i--) polynomialCoefficients[i] = 0;
+		for (unsigned int i = oldDeg; i > polynomialDegree; i--) polynomialCoefficients[i] = 0;
 	}
 	
 }
