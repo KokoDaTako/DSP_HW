@@ -15,7 +15,7 @@ Polynomial::Polynomial(unsigned int degree, double coefficients[]) : polynomialD
 	assert(("ERROR: Degree attempted during creation is higher than Max degree allowed", degree <= MAX_DEGREE));
 	polynomialCoefficients = new double[MAX_DEGREE + 1];
 
-	for (int i = 0; i <= degree; i++) {
+	for (unsigned int i = 0; i <= degree; i++) {
 		polynomialCoefficients[i] = coefficients[i];
 	}
 }
@@ -24,7 +24,7 @@ Polynomial::Polynomial(Polynomial& poly)
 {
 	polynomialDegree = poly.GetDegree();
 	polynomialCoefficients = new double[MAX_DEGREE + 1];
-	for (int i = 0; i <= polynomialDegree; i++) {
+	for (unsigned int i = 0; i <= polynomialDegree; i++) {
 		polynomialCoefficients[i] = poly.GetCoefficients()[i];
 	}
 }
@@ -51,18 +51,18 @@ void Polynomial::SetDegree(unsigned int newDeg)
 
 	if (oldDeg < newDeg)
 	{
-		for (int i = oldDeg; i <= polynomialDegree; i++) polynomialCoefficients[i] = 0;
+		for (unsigned int i = oldDeg; i <= polynomialDegree; i++) polynomialCoefficients[i] = 0;
 	}
 	else if (oldDeg > newDeg)
 	{
-		for (int i = oldDeg; i >= polynomialDegree; i--) polynomialCoefficients[i] = 0;
+		for (unsigned int i = oldDeg; i >= polynomialDegree; i--) polynomialCoefficients[i] = 0;
 	}
 	
 }
 
 void Polynomial::SetCoefficients(double newCoeff[])
 {
-	for (int i = 0; i <= polynomialDegree; i++) {
+	for (unsigned int i = 0; i <= polynomialDegree; i++) {
 		polynomialCoefficients[i] = newCoeff[i];
 	}
 }
@@ -78,7 +78,7 @@ bool Polynomial::operator==(Polynomial poly)
 	if (poly.GetDegree() != polynomialDegree) return false;
 	else
 	{
-		for (int i = 0; i <= polynomialDegree; i++)
+		for (unsigned int i = 0; i <= polynomialDegree; i++)
 		{
 			if (polynomialCoefficients[i] != poly.GetCoefficients()[i]) return false;
 		}
@@ -92,7 +92,7 @@ bool Polynomial::operator!=(Polynomial poly)
 	if (poly.GetDegree() != polynomialDegree) return true;
 	else
 	{
-		for (int i = 0; i <= polynomialDegree; i++)
+		for (unsigned int i = 0; i <= polynomialDegree; i++)
 		{
 			if (polynomialCoefficients[i] != poly.GetCoefficients()[i]) return true;
 		}
@@ -105,7 +105,7 @@ ostream& operator<<(ostream& os, Polynomial& poly)
 {
 	os << endl << "Degree: " << poly.GetDegree();
 	os << endl << "Polynomial: ";
-	for (int i = 0; i <= poly.GetDegree(); i++)
+	for (unsigned int i = 0; i <= poly.GetDegree(); i++)
 	{
 		os << *(poly.GetCoefficients() + i) << "x^" << i;
 		if (i != poly.GetDegree()) os << " + ";
@@ -120,7 +120,7 @@ istream& operator>>(istream& os, Polynomial& poly)
 	unsigned int deg;
 	os >> deg;
 	poly.SetDegree(deg);
-	for (int i = 0; i <= deg; i++)
+	for (unsigned int i = 0; i <= deg; i++)
 	{
 		std::cout << "Give me the coefficient for x^" << i;
 		os >> poly[i];
