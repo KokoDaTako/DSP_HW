@@ -143,7 +143,7 @@ void Polynomial::operator-=(Polynomial poly)
 
 void Polynomial::operator*=(Polynomial poly)
 {
-	assert("ERROR: Multiplication causes a polynom to overshoot the max degree limit", polynomialDegree + poly.GetDegree() > MAX_DEGREE);
+	assert(("ERROR: Multiplication causes a polynom to overshoot the max degree limit", (polynomialDegree + poly.GetDegree()) > MAX_DEGREE));
 	unsigned int oldDeg = polynomialDegree;
 	polynomialDegree += poly.GetDegree();
 	double temp[MAX_DEGREE + 1] = { 0 };
@@ -165,7 +165,7 @@ void Polynomial::operator++()
 	temp[0] = 1;
 
 	SetDegree(GetDegree() + 1);
-	for (int i = 1; i <= GetDegree(); i++)
+	for (unsigned int i = 1; i <= GetDegree(); i++)
 	{
 		temp[i] = GetCoefficients()[i - 1] / i;
 	}
