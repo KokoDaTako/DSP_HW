@@ -7,6 +7,7 @@ Polynomial::Polynomial()
 {
 	polynomialDegree = 0;
 	polynomialCoefficients = new double[MAX_DEGREE + 1];
+	for (int i = 0; i < MAX_DEGREE + 1; i++) polynomialCoefficients[i] = 0;
 }
 
 Polynomial::Polynomial(unsigned int degree, double coefficients[]) : polynomialDegree(degree) 
