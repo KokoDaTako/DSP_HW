@@ -140,6 +140,24 @@ void Polynomial::operator-=(Polynomial poly)
 		polynomialDegree--;
 	}
 }
+
+void Polynomial::operator*=(Polynomial poly)
+{
+	assert("ERROR: Multiplication causes a polynom to overshoot the max degree limit", polynomialDegree * poly.GetDegree() > MAX_DEGREE);
+	unsigned int oldDeg = polynomialDegree;
+	polynomialDegree += poly.GetDegree();
+	double temp[MAX_DEGREE + 1] = { 0 };
+
+	for (unsigned int i = 0; i <= oldDeg; i++)
+	{
+		for (unsigned int j = 0; j <= poly.GetDegree(); j++)
+		{
+			temp[i + j] += polynomialCoefficients[i] * poly.GetCoefficients()[j];
+		}
+	}
+
+	SetCoefficients(temp);
+}
 ostream& operator<<(ostream& os, Polynomial& poly)
 {
 	os << endl << "Degree: " << poly.GetDegree();
