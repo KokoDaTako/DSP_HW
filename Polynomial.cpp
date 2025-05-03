@@ -184,6 +184,16 @@ void Polynomial::operator--()
 	SetCoefficients(temp);
 	SetDegree(GetDegree() - 1);
 }
+
+double Polynomial::operator()(double x)
+{
+	double res = 0.0;
+	for (unsigned int i = 0; i <= GetDegree(); i++)
+	{
+		res += GetCoefficients()[i] * pow(x, i);
+	}
+	return res;
+}
 ostream& operator<<(ostream& os, Polynomial& poly)
 {
 	os << endl << "Degree: " << poly.GetDegree();

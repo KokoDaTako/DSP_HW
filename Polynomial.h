@@ -30,6 +30,7 @@ public:
 	void operator*=(Polynomial poly);
 	void operator++();
 	void operator--();
+	double operator()(double x);
 
 private:
 	unsigned int polynomialDegree = 0;
