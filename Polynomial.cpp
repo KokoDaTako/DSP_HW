@@ -3,7 +3,11 @@
 #include <string>
 #include <cassert>
 
-Polynomial::Polynomial(){}
+Polynomial::Polynomial()
+{
+	polynomialDegree = 0;
+	polynomialCoefficients = new double[MAX_DEGREE + 1];
+}
 
 Polynomial::Polynomial(unsigned int degree, double coefficients[]) : polynomialDegree(degree) 
 {
@@ -18,6 +22,7 @@ Polynomial::Polynomial(unsigned int degree, double coefficients[]) : polynomialD
 Polynomial::Polynomial(Polynomial& poly) 
 {
 	polynomialDegree = poly.GetDegree();
+	polynomialCoefficients = new double[MAX_DEGREE + 1];
 	for (int i = 0; i <= polynomialDegree; i++) {
 		polynomialCoefficients[i] = poly.GetCoefficients()[i];
 	}
