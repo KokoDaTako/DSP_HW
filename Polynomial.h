@@ -22,8 +22,11 @@ public:
 
 	//Operators
 	double& operator[](unsigned int index);
+	void operator=(Polynomial poly);
 	bool operator==(Polynomial poly);
 	bool operator!=(Polynomial poly);
+	void operator+=(Polynomial poly);
+	void operator-=(Polynomial poly);
 
 private:
 	unsigned int polynomialDegree = 0;

@@ -73,6 +73,16 @@ double& Polynomial::operator[](unsigned int index)
 	return polynomialCoefficients[index];
 }
 
+void Polynomial::operator=(Polynomial poly)
+{
+	polynomialDegree = poly.GetDegree();
+	polynomialCoefficients = new double[MAX_DEGREE + 1];
+	for (unsigned int i = 0; i <= polynomialDegree; i++)
+	{
+		polynomialCoefficients[i] = poly.GetCoefficients()[i];
+	}
+}
+
 bool Polynomial::operator==(Polynomial poly)
 {
 	if (poly.GetDegree() != polynomialDegree) return false;
@@ -101,6 +111,35 @@ bool Polynomial::operator!=(Polynomial poly)
 	return false;
 }
 
+void Polynomial::operator+=(Polynomial poly)
+{
+	if (polynomialDegree < poly.GetDegree()) polynomialDegree = poly.GetDegree();
+
+	for (unsigned int i = 0; i <= polynomialDegree; i++)
+	{
+		polynomialCoefficients[i] += poly.GetCoefficients()[i];
+	}
+
+	while (polynomialCoefficients[polynomialDegree] == 0)
+	{
+		polynomialDegree--;
+	}
+}
+
+void Polynomial::operator-=(Polynomial poly)
+{
+	if (polynomialDegree < poly.GetDegree()) polynomialDegree = poly.GetDegree();
+
+	for (unsigned int i = 0; i <= polynomialDegree; i++)
+	{
+		polynomialCoefficients[i] -= poly.GetCoefficients()[i];
+	}
+
+	while (polynomialCoefficients[polynomialDegree] == 0 && polynomialDegree > 0)
+	{
+		polynomialDegree--;
+	}
+}
 ostream& operator<<(ostream& os, Polynomial& poly)
 {
 	os << endl << "Degree: " << poly.GetDegree();
