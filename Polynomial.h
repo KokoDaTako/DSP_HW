@@ -28,6 +28,7 @@ public:
 	void operator+=(Polynomial poly);
 	void operator-=(Polynomial poly);
 	void operator*=(Polynomial poly);
+	void operator++();
 
 private:
 	unsigned int polynomialDegree = 0;

@@ -158,6 +158,20 @@ void Polynomial::operator*=(Polynomial poly)
 
 	SetCoefficients(temp);
 }
+
+void Polynomial::operator++()
+{
+	double temp[MAX_DEGREE + 1];
+	temp[0] = 1;
+
+	SetDegree(GetDegree() + 1);
+	for (int i = 1; i <= GetDegree(); i++)
+	{
+		temp[i] = GetCoefficients()[i - 1] / i;
+	}
+
+	SetCoefficients(temp);
+}
 ostream& operator<<(ostream& os, Polynomial& poly)
 {
 	os << endl << "Degree: " << poly.GetDegree();
