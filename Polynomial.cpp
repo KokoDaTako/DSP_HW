@@ -172,6 +172,18 @@ void Polynomial::operator++()
 
 	SetCoefficients(temp);
 }
+
+void Polynomial::operator--()
+{
+	double temp[MAX_DEGREE + 1];
+	for (unsigned int i = 0; i < GetDegree(); i++)
+	{
+		temp[i] = GetCoefficients()[i + 1] * (i + 1);
+	}
+
+	SetCoefficients(temp);
+	SetDegree(GetDegree() - 1);
+}
 ostream& operator<<(ostream& os, Polynomial& poly)
 {
 	os << endl << "Degree: " << poly.GetDegree();
