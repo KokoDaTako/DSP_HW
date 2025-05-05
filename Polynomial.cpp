@@ -87,7 +87,7 @@ void Polynomial::operator=(Polynomial poly)
 	}
 }
 
-bool Polynomial::operator==(Polynomial poly)
+bool Polynomial::operator==(Polynomial poly) const
 {
 	if (poly.GetDegree() != polynomialDegree) return false;
 	else
@@ -101,7 +101,7 @@ bool Polynomial::operator==(Polynomial poly)
 	return true;
 }
 
-bool Polynomial::operator!=(Polynomial poly)
+bool Polynomial::operator!=(Polynomial poly) const
 {
 	if (poly.GetDegree() != polynomialDegree) return true;
 	else
@@ -189,7 +189,7 @@ void Polynomial::operator--()
 	SetDegree(GetDegree() - 1);
 }
 
-double Polynomial::operator()(double x)
+double Polynomial::operator()(double x) const
 {
 	double res = 0.0;
 	for (unsigned int i = 0; i <= GetDegree(); i++)

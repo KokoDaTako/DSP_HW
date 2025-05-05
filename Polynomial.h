@@ -22,16 +22,16 @@ public:
 	void SetPolynomial(unsigned int newDeg, double newCoeff[]);
 
 	//Operators
-	double& operator[](unsigned int index);
+	double& operator[](unsigned int index) const;
 	void operator=(Polynomial poly);
-	bool operator==(Polynomial poly);
-	bool operator!=(Polynomial poly);
+	bool operator==(Polynomial poly) const;
+	bool operator!=(Polynomial poly) const;
 	void operator+=(Polynomial poly);
 	void operator-=(Polynomial poly);
 	void operator*=(Polynomial poly);
 	void operator++();
 	void operator--();
-	double operator()(double x);
+	double operator()(double x) const;
 
 private:
 	unsigned int polynomialDegree = 0;
