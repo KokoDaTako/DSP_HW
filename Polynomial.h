@@ -29,6 +29,9 @@ public:
 	void operator+=(Polynomial poly);
 	void operator-=(Polynomial poly);
 	void operator*=(Polynomial poly);
+	Polynomial operator+(Polynomial poly) const;
+	Polynomial operator-(Polynomial poly) const;
+	Polynomial operator*(Polynomial poly) const;
 	void operator++();
 	void operator--();
 	double operator()(double x) const;
