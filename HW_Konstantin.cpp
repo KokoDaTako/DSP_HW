@@ -27,4 +27,6 @@ int main()
 
 	//Polynomial at x=2
 	double evaluation = multi(2);
+	cout << endl << evaluation;
+
 }
