@@ -38,5 +38,5 @@ private:
 
 };
 
-ostream& operator<<(ostream& os, Polynomial& poly);
+ostream& operator<<(ostream& os, Polynomial poly);
 istream& operator>>(istream& os, Polynomial& poly);

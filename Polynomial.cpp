@@ -192,7 +192,7 @@ double Polynomial::operator()(double x)
 	}
 	return res;
 }
-ostream& operator<<(ostream& os, Polynomial& poly)
+ostream& operator<<(ostream& os, Polynomial poly)
 {
 	os << endl << "Degree: " << poly.GetDegree();
 	os << endl << "Polynomial: ";
