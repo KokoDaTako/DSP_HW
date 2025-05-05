@@ -245,19 +245,19 @@ ostream& operator<<(ostream& os, Polynomial poly)
 		os << *(poly.GetCoefficients() + i) << "x^" << i;
 		if (i != poly.GetDegree()) os << " + ";
 	}
-
+	os << endl;
 	return os;
 }
 
 istream& operator>>(istream& os, Polynomial& poly)
 {
-	std::cout << endl << "What degree will the polynomial be?";
+	std::cout << endl << "What degree will the polynomial be? ";
 	unsigned int deg;
 	os >> deg;
 	poly.SetDegree(deg);
 	for (unsigned int i = 0; i <= deg; i++)
 	{
-		std::cout << "Give me the coefficient for x^" << i;
+		std::cout << "Give me the coefficient for x^" << i << ": ";
 		os >> poly[i];
 	}
 
