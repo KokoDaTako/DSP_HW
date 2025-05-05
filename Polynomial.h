@@ -19,6 +19,7 @@ public:
 	//Setters
 	void SetDegree(unsigned int newDeg);
 	void SetCoefficients(double newCoeff[]);
+	void SetPolynomial(unsigned int newDeg, double newCoeff[]);
 
 	//Operators
 	double& operator[](unsigned int index);

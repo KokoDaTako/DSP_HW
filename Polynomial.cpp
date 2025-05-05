@@ -65,7 +65,13 @@ void Polynomial::SetCoefficients(double newCoeff[])
 	}
 }
 
-double& Polynomial::operator[](unsigned int index)
+void Polynomial::SetPolynomial(unsigned int newDeg, double newCoeff[])
+{
+	SetDegree(newDeg);
+	SetCoefficients(newCoeff);
+}
+
+double& Polynomial::operator[](unsigned int index) const
 {
 	assert(("ERROR: index attempted is higher than degree", index <= polynomialDegree));
 	return polynomialCoefficients[index];
