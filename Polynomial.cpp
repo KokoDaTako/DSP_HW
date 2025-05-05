@@ -20,13 +20,11 @@ Polynomial::Polynomial(unsigned int degree, double coefficients[]) : polynomialD
 	}
 }
 
-Polynomial::Polynomial(Polynomial& poly) 
+Polynomial::Polynomial(const Polynomial& poly) 
 {
 	polynomialDegree = poly.GetDegree();
 	polynomialCoefficients = new double[MAX_DEGREE + 1];
-	for (unsigned int i = 0; i <= polynomialDegree; i++) {
-		polynomialCoefficients[i] = poly.GetCoefficients()[i];
-	}
+	SetCoefficients(poly.GetCoefficients());
 }
 
 Polynomial::~Polynomial()
@@ -34,12 +32,12 @@ Polynomial::~Polynomial()
 	delete polynomialCoefficients;
 }
 
-unsigned int Polynomial::GetDegree()
+unsigned int Polynomial::GetDegree() const
 {
 	return polynomialDegree;
 }
 
-double* Polynomial::GetCoefficients()
+double* Polynomial::GetCoefficients() const
 {
 	return polynomialCoefficients;
 }

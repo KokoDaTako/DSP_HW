@@ -9,12 +9,12 @@ class Polynomial
 public:
 	Polynomial();
 	Polynomial(unsigned int degree, double coefficients[]);
-	Polynomial(Polynomial& poly);
+	Polynomial(const Polynomial& poly);
 	~Polynomial();
 
 	//Getters
-	unsigned int GetDegree();
-	double* GetCoefficients();
+	unsigned int GetDegree() const;
+	double* GetCoefficients() const;
 
 	//Setters
 	void SetDegree(unsigned int newDeg);
