@@ -18,6 +18,10 @@ Polynomial::Polynomial(unsigned int degree, double coefficients[]) : polynomialD
 	for (unsigned int i = 0; i <= degree; i++) {
 		polynomialCoefficients[i] = coefficients[i];
 	}
+	for (unsigned int i = degree + 1; i < MAX_DEGREE + 1; i++)
+	{
+		polynomialCoefficients[i] = 0;
+	}
 }
 
 Polynomial::Polynomial(const Polynomial& poly) 
@@ -29,7 +33,7 @@ Polynomial::Polynomial(const Polynomial& poly)
 
 Polynomial::~Polynomial()
 {
-	delete polynomialCoefficients;
+	delete[] polynomialCoefficients;
 }
 
 unsigned int Polynomial::GetDegree() const
@@ -63,6 +67,10 @@ void Polynomial::SetCoefficients(double newCoeff[])
 	for (unsigned int i = 0; i <= polynomialDegree; i++) {
 		polynomialCoefficients[i] = newCoeff[i];
 	}
+	for (unsigned int i = polynomialDegree + 1; i < MAX_DEGREE + 1; i++)
+	{
+		polynomialCoefficients[i] = 0;
+	}
 }
 
 void Polynomial::SetPolynomial(unsigned int newDeg, double newCoeff[])
@@ -81,10 +89,15 @@ void Polynomial::operator=(Polynomial poly)
 {
 	polynomialDegree = poly.GetDegree();
 	polynomialCoefficients = new double[MAX_DEGREE + 1];
-	for (unsigned int i = 0; i <= polynomialDegree; i++)
+	/*for (unsigned int i = 0; i <= polynomialDegree; i++)
 	{
 		polynomialCoefficients[i] = poly.GetCoefficients()[i];
 	}
+	for (unsigned int i = polynomialDegree + 1; i < MAX_DEGREE + 1; i++)
+	{
+		polynomialCoefficients[i] = 0;
+	}*/
+	SetCoefficients(poly.GetCoefficients());
 }
 
 bool Polynomial::operator==(Polynomial poly) const
@@ -165,7 +178,7 @@ void Polynomial::operator*=(Polynomial poly)
 
 Polynomial Polynomial::operator+(Polynomial poly) const
 {
-	unsigned int deg = max(poly.GetDegree(), GetDegree());
+	/*unsigned int deg = max(poly.GetDegree(), GetDegree());
 	double temp[MAX_DEGREE + 1] = { 0 };
 	Polynomial result(deg, temp);
 
@@ -175,12 +188,17 @@ Polynomial Polynomial::operator+(Polynomial poly) const
 	}
 
 	result.SetCoefficients(temp);
+	return result;*/
+
+	Polynomial result = *this;
+	result += poly;
+
 	return result;
 }
 
 Polynomial Polynomial::operator-(Polynomial poly) const
 {
-	unsigned int deg = max(poly.GetDegree(), GetDegree());
+	/*unsigned int deg = max(poly.GetDegree(), GetDegree());
 	double temp[MAX_DEGREE + 1] = { 0 };
 	Polynomial result(deg, temp);
 
@@ -190,6 +208,11 @@ Polynomial Polynomial::operator-(Polynomial poly) const
 	}
 
 	result.SetCoefficients(temp);
+	return result;*/
+
+	Polynomial result = *this;
+	result -= poly;
+
 	return result;
 }
 
